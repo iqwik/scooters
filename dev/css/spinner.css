@@ -1,0 +1,118 @@
+/* pi * inner_diameter */
+@value anim_offset: 187;
+@value anim_offset_div4: 46.75;
+
+@value anim_duration: 1.4s;
+@value anim_duration4x: 5.6s;
+
+@value anim24_offset: 62.83;
+@value anim24_offset_div4: 15.7;
+
+@value red: #ff0000;
+
+@keyframes rotator
+{
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(270deg); }
+}
+
+@keyframes simple_rotator
+{
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+@keyframes colors
+{
+    0% { stroke: #4285F4; }
+    25% { stroke: #DE3E35; }
+    50% { stroke: #F7C223; }
+    75% { stroke: #1B9A59; }
+    100% { stroke: #4285F4; }
+}
+
+@keyframes dash
+{
+    0% { stroke-dashoffset: anim_offset; }
+    50%
+    {
+        stroke-dashoffset: anim_offset_div4;
+        transform:rotate(135deg);
+    }
+    100%
+    {
+        stroke-dashoffset: anim_offset;
+        transform:rotate(450deg);
+    }
+}
+
+@keyframes simple_dash
+{
+    0%
+    {
+    }
+    50%
+    {
+        transform: rotate(135deg);
+    }
+    100%
+    {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes dash24
+{
+    0% { stroke-dashoffset: anim24_offset; }
+    50%
+    {
+        stroke-dashoffset: anim24_offset_div4;
+        transform:rotate(135deg);
+    }
+    100%
+    {
+        stroke-dashoffset: anim24_offset;
+        transform:rotate(450deg);
+    }
+}
+
+.spinner
+{
+    animation: rotator anim_duration linear infinite;
+}
+
+.spinner_path
+{
+    stroke-dasharray: anim_offset;
+    stroke-dashoffset: 0;
+    transform-origin: center;
+    stroke: red;
+    animation:
+            dash anim_duration ease-in-out infinite/*,
+        colors anim_duration4x ease-in-out infinite*/;
+}
+
+.simple_spinner
+{
+    animation: simple_rotator anim_duration linear infinite;
+}
+
+.simple_path
+{
+    stroke-dasharray: anim_offset_div4 anim_offset_div4 anim_offset_div4 anim_offset_div4;
+    stroke-dashoffset: anim_offset_div4;
+    transform-origin: center;
+    stroke: red;
+    animation: simple_dash anim_duration ease-in-out infinite;
+}
+
+.spinner24_path
+{
+    stroke-dasharray: anim24_offset;
+    stroke-dashoffset: 0;
+    transform-origin: center;
+    stroke: red;
+    animation:
+            dash24 anim_duration ease-in-out infinite/*,
+        colors anim_duration4x ease-in-out infinite*/;
+}

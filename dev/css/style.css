@@ -1,0 +1,8 @@
+@charset "UTF-8";
+@import './normalize.css';
+@import './fonts.css';
+
+body
+{
+    font-family: "Gotham Pro";
+}
