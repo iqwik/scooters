@@ -1,4 +1,5 @@
 .idea
 package-lock.json
-/app
+npm-debug.log
+/public
 /node_modules
