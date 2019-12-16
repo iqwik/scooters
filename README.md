@@ -1,0 +1,1 @@
+После сборки не забудь переместить из assets/img папку models в public/assets/img

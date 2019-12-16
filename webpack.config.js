@@ -1,135 +1,169 @@
+const path = require('path');
 const webpack = require('webpack');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+// const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const NODE_ENV = process.env.NODE_ENV || 'development';
+const isDev = NODE_ENV === 'development';
 
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-// const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-// const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
-
-const dev_path = 'dev';
-const prod_path = 'app';
+const prodPath = path.join(__dirname, '/public');
+const devPath = path.join(__dirname, '/dist');
 
 module.exports = {
     entry: {
-        app: './index.js',
+        app: './main.js'
     },
-    context: `${__dirname}/${dev_path}`,
+    context: __dirname,
     output: {
-        path: `${__dirname}/${prod_path}/`,
-        filename: NODE_ENV === 'development' ? '[name].js' : 'assets/js/[name].[hash:6].min.js',
+        filename: isDev ? '[name].js' : 'assets/js/[name].[hash:6].min.js',
+        path: prodPath,
         publicPath: '/'
     },
-
-    optimization: {
-        minimize: NODE_ENV !== 'development',
-    },
-
     plugins: [
-        new webpack.DefinePlugin({ __IS_DEV__ : NODE_ENV === 'development' }),
-        new HtmlWebpackPlugin({
-            template: NODE_ENV === 'development' ? './html/index.html' : './html/index.php',
-            filename: NODE_ENV === 'development' ? 'index.html' : 'index.php',
+        new webpack.DefinePlugin({ __IS_DEV__ : isDev }),
+        new MiniCssExtractPlugin({
+            filename: isDev ? '[name].css' : 'assets/css/[name].[hash:6].min.css',
+            chunkFilename: isDev ? '[id].css' : '[id].[hash:6].min.css',
+            ignoreOrder: false,
         }),
-        // new MiniCssExtractPlugin({
-        //     filename: NODE_ENV === 'development' ? 'css/[name].css' : 'assets/css/[name].[hash:6].css',
-        //     chunkFilename: NODE_ENV === 'development' ? 'css/[id].css' : 'assets/css/[id].css',
-        // }),
-        // NODE_ENV === 'development'
-        //     ? null
-        //     : new OptimizeCssAssetsPlugin({
-        //     filename: 'assets/css/[name].[hash:6].css',
-        //     chunkFilename: 'assets/css/[id].css',
-        //     cssProcessor: require('cssnano'),
-        //     cssProcessorOptions: { discardComments: {removeAll: true } },
-        // }),
+        new HtmlWebpackPlugin({
+            template: devPath+'/html/index.html',
+        })
     ],
-
-    module: {
-        rules: [
-            {
-                test: /\.(js|jsx)$/,
-                include: `${__dirname}/${dev_path}`,
-                loader: 'babel-loader?presets[]=react&presets[]=es2015&presets[]=stage-1',
-                exclude: /node_modules/,
-            },
-            {
-                test: /\.(sass|scss|css)$/,
-                use: [
-                    // 'style-loader',
-                    {
-                        loader: "style-loader",
+    module:
+    {
+        rules:
+            [
+                {
+                    test: /\.(js|jsx)$/,
+                    exclude: /node_modules/,
+                    use: [{
+                        loader: 'babel-loader',
                         options: {
-                            singleton: true
+                            presets: ['es2015', 'react', 'stage-1']
                         }
-                    },
-                    // {
-                    //     loader: MiniCssExtractPlugin.loader,
-                    //     options: {
-                    //         hmr: NODE_ENV === 'development',
-                    //     },
-                    // },
-                    {
-                        loader: 'css-loader',
-                        options: {
-                            importLoaders: 1,
-                            modules: true,
-                            localIdentName: '[name]--[local]--[hash:base64:5]',
-                            sourceMap: true
-                        }
-                    },
-                    {
-                        loader: 'postcss-loader',
-                        options: {
-                            sourceMap: true,
-                            config: { path: './postcss.config.js' },
-                        }
-                    },
-                    {
-                        loader: 'sass-loader',
-                        options: { sourceMap: true }
                     }
-                ]
-            },
-            {
-                test: /\.(ttf|eot|woff|woff2|otf)$/,
-                include: `${__dirname}/${dev_path}`,
-                use: [
-                    {
-                        loader: 'url-loader',
+                    ]
+                },
+                {
+                    test: /\.(sa|sc|c)ss$/,
+                    exclude: /node_modules/,
+                    use:
+                        [
+                            {
+                                loader: MiniCssExtractPlugin.loader,
+                                options: {
+                                    hmr: isDev,
+                                },
+                            },
+                            {
+                                loader: 'css-loader',
+                                options: {
+                                    modules: true,
+                                    sourceMap: true,
+                                    importLoaders: 2,
+                                    localIdentName: '[name]--[local]--[hash:base64:6]'
+                                }
+                            },
+                            'sass-loader',
+                            'postcss-loader',
+                            'resolve-url-loader',
+                        ]
+                },
+                {
+                    test: /\.(gif|png|jpe?g|svg)$/i,
+                    use:
+                        [
+                            {
+                                loader: 'file-loader',
+                                options: {
+                                    name: isDev ? '[path][name].[ext]' : '[path][name]_[hash:base64:6].[ext]',
+                                    useRelativePath: true
+                                },
+                            },
+                            {
+                                loader: 'image-webpack-loader',
+                                options: {
+                                    mozjpeg: {
+                                        progressive: true,
+                                        quality: 70
+                                    }
+                                }
+                            },
+                        ],
+                },
+                {
+                    test: /\.(eot|svg|ttf|woff|woff2)$/,
+                    use: {
+                        loader: 'file-loader',
                         options: {
-                            limit: 8192,
-                            name: NODE_ENV === 'development' ? '[name].[ext]' : 'assets/[path][name]_[hash:6].[ext]',
+                            name: isDev ? '[path][name].[ext]' : '[path][name]_[hash:base64:6].[ext]',
                             useRelativePath: true
-                        },
+                        }
                     },
-                ]
-            },
-            {
-                test: /\.(png|jpg|gif|svg)$/,
-                include: `${__dirname}`,
-                use: [
-                    {
-                        loader: 'url-loader',
-                        options: {
-                            limit: 8192,
-                            name: NODE_ENV === 'development' ? '[path][name].[ext]' : 'assets/[path][name]_[hash:base64:6].[ext]',
-                            useRelativePath: true
-                        },
-                    },
-                ]
-            },
-        ],
+                }
+            ]
     },
-
     resolve: {
-        modules: [`${__dirname}/${dev_path}`, 'node_modules'],
+        modules: [__dirname, 'node_modules'],
         extensions: ['.js', '.jsx'],
     },
-
-    watch: NODE_ENV === 'development',
-    watchOptions: {
-        aggregateTimeout: 100,
-    },
-
-    devtool: NODE_ENV === 'development' ? 'cheap-inline-module-source-map' : false,
+    watch: isDev,
+    watchOptions: { aggregateTimeout: 100 },
+    devtool: isDev ? 'cheap-inline-module-source-map' : false,
+    optimization: {
+        minimize: !isDev
+    }
 };
+
+if (!isDev)
+{
+    const fs = require("fs-extra");
+    const imgModels = path.join('assets/img','models');
+    const source = path.join(__dirname, imgModels);
+    const destination = path.join(prodPath, imgModels);
+
+    fs.removeSync(prodPath);
+
+    fs.mkdirSync(prodPath, err =>
+    {
+        if (err)
+        {
+            throw err;
+        }
+    });
+
+    fs.mkdirSync(path.join(prodPath, 'assets'), err =>
+    {
+        if (err)
+        {
+            throw err;
+        }
+    });
+
+    fs.mkdirSync(path.join(prodPath+'/assets', 'img'), err =>
+    {
+        if (err)
+        {
+            throw err;
+        }
+    });
+
+    fs.mkdirSync(destination, err =>
+    {
+        if (err)
+        {
+            throw err;
+        }
+    });
+
+    fs.copy(source, destination, err =>
+    {
+        if (err)
+        {
+            return console.error(err)
+        }
+        console.log('\nCopy completed!')
+    });
+}
