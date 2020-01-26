@@ -262,6 +262,16 @@ export class MainPage extends React.PureComponent
             : "3px solid "+(COLORS_CODES[el] === '#ffffff' ? '#f0f0f0' : COLORS_CODES[el]);
     }
 
+    renderAboutRows()
+    {
+        let r = [];
+        for (let i in CONTACTS.about)
+        {
+            r.push(<p key={i}>{CONTACTS.about[i]}</p>);
+        }
+        return r;
+    }
+
     renderAbout()
     {
         return (<Dialog
@@ -281,9 +291,9 @@ export class MainPage extends React.PureComponent
                         css.flexDirectionColumn,
                         css.alignItemsCenter,
                         css.justifyContentCenter].join(' ')}>
-                        <div>
+                        <div className={cont_css.infoAll}>
                             <h4>Информация о нас:</h4>
-                            <p>{CONTACTS.about}</p>
+                            <div className={cont_css.infoP}>{this.renderAboutRows()}</div>
                         </div>
                     </div>
                     <div className={cont_css.contactsRightBlock}></div>
@@ -311,7 +321,7 @@ export class MainPage extends React.PureComponent
                         css.flexDirectionColumn,
                         css.alignItemsCenter,
                         css.justifyContentCenter].join(' ')}>
-                        <div>
+                        <div className={cont_css.infoAll}>
                             <h4>Заказ и сотрудичество:</h4>
                             <ul>
                                 <li><a href={"tel:"+CONTACTS.tel.href}>{CONTACTS.tel.num}</a></li>

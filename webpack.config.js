@@ -150,6 +150,14 @@ if (!isDev)
         }
     });
 
+    fs.mkdirSync(path.join(prodPath, 'uploads'), error =>
+    {
+        if (error)
+        {
+            throw error;
+        }
+    });
+
     fs.mkdirSync(destination, err =>
     {
         if (err)

@@ -5,7 +5,8 @@
 {
     position: relative;
     width: 100%;
-    height: 100vh;
+    min-height: 100vh;
+    height: 100%;
 }
 
 .contactsBG
@@ -21,7 +22,7 @@
 .leftBlock
 {
     background-size: cover;
-    height: 100%;
+    /*height: 100%;*/
 }
 
 @media (max-width: 1390px)
@@ -91,14 +92,21 @@
 .info
 {
     color: #fff;
-    font-size: 25px;
+    font-size: 20px;
+    min-height: 100vh;
     height: 100%;
 }
 
-.info div
+.infoAll
 {
-    padding: 0 50px;
-    width: 80%;
+    padding: 2rem 2.5rem;
+    width: 90%;
+    box-sizing: border-box;
+}
+
+.infoP p
+{
+    font-size: 16px;
 }
 
 @media (max-width: 1390px)
@@ -108,16 +116,16 @@
         display: block;
     }
 
-    .info div
+    .infoAll
     {
         max-width: 50%;
         margin: 0 auto;
-        padding: 50px;
+        padding: 2rem;
     }
 
-    .info div p 
+    .infoP p
     {
-        font-size: 20px;
+        font-size: 14px;
     }
 }
 
@@ -135,7 +143,7 @@
 
 @media (max-width: 990px)
 {
-    .info div
+    .infoAll
     {
         max-width: 420px;
     }
@@ -155,12 +163,12 @@
         z-index: 1;
     }
 
-    .info div
+    .infoAll
     {
         max-width: 90%;
         width: 90%;
         box-sizing: border-box;
         margin: 0;
-        padding: 50px 0;
+        padding: 2rem 0;
     }
 }

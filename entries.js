@@ -5,11 +5,18 @@ export const PATH = {
 }
 
 export const CONTACTS = {
-    tel: { href: "+78043337414", num: "8 (804) 333-74-14"},
-    email: "info@itank-russia.ru",
-    address: ['г. Москва, Осенняя ул., д.23'],
+    tel: { href: "+78005516810", num: "8 800 551-68-10"},
+    email: "eko-bike@mail.ru",
+    address: ['г.Санкт-Петербург  Большой Сампсониевский пр.29','г.Москва, ул. Средняя Первомайская д.3'],
     yaMap: { src: 'https://yandex.ru/map-widget/v1/?um=constructor%3Aa9c290ef41c7d9834f65793d1edc7df3bf11fe3bd0eff4c9ad560737cccbc747&amp;source=constructor' },
-    about: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.'
+    about: [
+        'iSputnik - экология движения!',
+        'Компания iSputnik в настоящее время специализируется на бренде Doohan и является авторизованным импортером и дистрибьютором Doohan в России!',
+        'iSputnik фокусируется на практичных экологически чистых транспортных решениях и предлагает технически совершенную продукцию, постоянные инновации, безопасность и долговечность, чтобы подарить Вам лучшие впечатления от езды!',
+        'Компания Doohan была основана в 2014 году и инвестировала в эволюцию транспортных средств, создав инновационный электрический скутер. Компания Doohan стала пионером в разработке и производстве электрических скутеров нового поколения, и также продолжает оставаться передовым брендом индустрии. Ей доверяют сотни тысяч человек по всей Европе и во всем мире! Микро-мобильность это свобода передвижения!',
+        'Мы открыли первый специализированный магазин и сервис электрических скутеров Doohan в Москве в Крылатском. Также, продукцию Doohan можно приобрести у авторизованных розничных продавцов, перечисленных в разделе Контакты.',
+        'Электрические скутеры Doohan с каждым днем становятся все более популярными. У них масса преимуществ — такой личный транспорт не считается дорогим, его батарею легко перезаряжать, он мобильный, удобный, в городе вы забудете что такое пробки, а загородом электроскутер станет незаменимым транспортом для всей семьи. А самое главное, электрические скутеры – это активный транспорт, который имеет нулевой выброс углерода и потому его можно считать на сто процентов экологически безопасным!'
+    ]
 }
 
 export const MODELS = {
@@ -17,6 +24,29 @@ export const MODELS = {
         name: 'iTank',
         active: true,
         modify: {
+            '1500W': {
+                colors: {
+                    red: { poster: '1.png', gallery: ['1.png','2.png','3.png','4.png'] },
+                    black: { poster: '1.png', gallery: ['1.png','2.png','3.png','4.png'] },
+                    blue: { poster: '1.png', gallery: ['1.png','2.png','3.png','4.png'] },
+                    white: { poster: '1.png', gallery: ['1.png','2.png','3.png','4.png','5.png'] }
+                },
+                def_color: 'red',
+                description: {
+                    0: 'Мотор Bosch (Germany) 1500 W',
+                    1: 'Максимальная скорость 45 км/ч',
+                    2: 'Максимальная дистанция 120 км (<45 км/ч)',
+                    3: 'Максимальная нагрузка 160 кг',
+                    4: 'Аккумулятор 60V 26Ah*2 Lithium',
+                    5: 'Время зарядки 3,5-8 часов',
+                    6: 'Количество циклов зарядки 600',
+                    7: 'Собственный вес 108 кг',
+                    8: 'Габариты 1780x730x1030 (мм)',
+                    9: 'Защита от воды IP65',
+                },
+                stock: 'in',
+                price: 'XXX XXX руб',
+            },
             '3900W': {
                 colors: {
                     red: { poster: '1.png', gallery: ['1.png','2.png','3.png','4.png'] },
@@ -30,22 +60,45 @@ export const MODELS = {
                     1: 'Максимальная скорость 70 км/ч',
                     2: 'Максимальная дистанция 120 км (<45 км/ч)',
                     3: 'Максимальная нагрузка 160 кг',
-                    4: 'Аккумулятор 60V 26Ah Lithium',
-                    5: 'Время зарядки 6-8 часов',
+                    4: 'Аккумулятор 60V 26Ah*2 Lithium',
+                    5: 'Время зарядки 3,5-8 часов',
                     6: 'Количество циклов зарядки 600',
-                    7: 'Собственный вес 99 кг',
-                    8: 'Габариты 1780 мм * 730 мм * 1030 мм',
+                    7: 'Собственный вес 108 кг',
+                    8: 'Габариты 1780x730x1030 (мм)',
                     9: 'Защита от воды IP65',
                 },
                 stock: 'in',
                 price: 'XXX XXX руб',
-            }
+            },
         }
     },
     "iTango": {
         name: 'iTango',
         active: true,
         modify: {
+            '1000W': {
+                colors: {
+                    red: { poster: '1.png', gallery: ['1.png','2.png','3.png','4.png','5.png'] },
+                    black: { poster: '1.png', gallery: ['1.png','2.png','3.png','4.png','5.png'] },
+                    white: { poster: '1.png', gallery: ['1.png','2.png','3.png','4.png','5.png'] },
+                    blue: { poster: '1.png', gallery: ['1.png','2.png','3.png','4.png','5.png'] },
+                    green: { poster: '1.png', gallery: ['1.png','2.png','3.png','4.png','5.png'] },
+                },
+                def_color: 'white',
+                description: {
+                    0: 'Мотор Bosch (Germany) 1000 W',
+                    1: 'Максимальная скорость 45 км/ч',
+                    2: 'Максимальная дистанция 50 км (<25 км/ч)',
+                    3: 'Максимальная нагрузка 154 кг',
+                    4: 'Аккумулятор 48V 20Ah Lithium',
+                    5: 'Время зарядки 5-6 часов',
+                    6: 'Количество циклов зарядки 600',
+                    7: 'Собственный вес 65 кг',
+                    8: 'Габариты 1648x651x1110 (мм)',
+                    9: 'Защита от воды IP65',
+                },
+                stock: 'out',
+            },
             '1200W': {
                 colors: {
                     red: { poster: '1.png', gallery: ['1.png','2.png','3.png','4.png','5.png'] },
@@ -56,13 +109,19 @@ export const MODELS = {
                 },
                 def_color: 'white',
                 description: {
-                    power: '1200W',
-                    speed: '45 км/ч',
-                    range: 'до 80 км',
-                    other: 'Защита от воды IP65',
+                    0: 'Мотор Bosch (Germany) 1200 W',
+                    1: 'Максимальная скорость 45 км/ч',
+                    2: 'Максимальная дистанция 50 км (<25 км/ч) 70 км (<45 км/ч)',
+                    3: 'Максимальная нагрузка 154 кг',
+                    4: 'Аккумулятор 48V 26Ah Lithium',
+                    5: 'Время зарядки 5-6 часов',
+                    6: 'Количество циклов зарядки 600',
+                    7: 'Собственный вес 65 кг',
+                    8: 'Габариты 1648x651x1110 (мм)',
+                    9: 'Защита от воды IP65',
                 },
                 stock: 'out',
-            }
+            },
         }
     },
     "iLark": {
@@ -78,23 +137,35 @@ export const MODELS = {
                 },
                 def_color: 'green',
                 description: {
-                    power: '180W',
-                    speed: '25 км/ч',
-                    range: 'до 35 км',
-                    other: 'Защита от воды IP65',
+                    0: 'Мотор Bosch (Germany) 180 W',
+                    1: 'Максимальная скорость 25 км/ч',
+                    2: 'Максимальная дистанция 25 км',
+                    3: 'Максимальная нагрузка 100 кг',
+                    4: 'Аккумулятор 48V 10Ah Lithium',
+                    5: 'Время зарядки 5,5 часов',
+                    6: 'Количество циклов зарядки 600',
+                    7: 'Собственный вес 29 кг',
+                    8: 'Габариты 1125x513x1100 (мм)',
+                    9: 'Защита от воды IP65',
                 },
                 stock: 'out',
             },
-            '350W': {
+            '300W': {
                 colors: {
                     orange: { poster: '1.png', gallery: ['1.png','2.png','3.png','4.png','5.png','6.png','7.png'] },
                 },
                 def_color: 'orange',
                 description: {
-                    power: '350W',
-                    speed: '25 км/ч',
-                    range: 'до 35 км',
-                    other: 'Защита от воды IP65',
+                    0: 'Мотор Bosch (Germany) 300 W',
+                    1: 'Максимальная скорость 25 км/ч',
+                    2: 'Максимальная дистанция 35 км',
+                    3: 'Максимальная нагрузка 100 кг',
+                    4: 'Аккумулятор 48V 15Ah Lithium',
+                    5: 'Время зарядки 3 часа',
+                    6: 'Количество циклов зарядки 600',
+                    7: 'Собственный вес 32 кг',
+                    8: 'Габариты 1125x513x1100 (мм)',
+                    9: 'Защита от воды IP65',
                 },
                 stock: 'out',
             },
@@ -104,7 +175,7 @@ export const MODELS = {
         name: 'iDuo',
         active: true,
         modify: {
-            '300W': {
+            '800W': {
                 colors: {
                     red: { poster: '1.png', gallery: ['1.png','6.png'] },
                     black: { poster: '1.png', gallery: ['1.png','2.png','3.png','6.png'] },
@@ -114,10 +185,16 @@ export const MODELS = {
                 },
                 def_color: 'white',
                 description: {
-                    power: '300W',
-                    speed: '25 км/ч',
-                    range: 'до 35 км',
-                    other: 'Защита от воды IP65',
+                    0: 'Мотор Bosch (Germany) 800 W',
+                    1: 'Максимальная скорость 45 км/ч',
+                    2: 'Максимальная дистанция 50 км (<20 км/ч)',
+                    3: 'Максимальная нагрузка 150 кг',
+                    4: 'Аккумулятор 48V 26Ah Lithium',
+                    5: 'Время зарядки 6-8 часов',
+                    6: 'Количество циклов зарядки 500',
+                    7: 'Собственный вес 70 кг',
+                    8: 'Габариты 1632x708x998 (мм)',
+                    9: 'Защита от воды IP65',
                 },
                 stock: 'out',
             }
@@ -127,15 +204,22 @@ export const MODELS = {
         name: 'E-Swan',
         active: true,
         modify: {
-            '1': {
+            '1200W': {
                 colors: {
                     gray: { poster: '1.png', gallery: ['1.png'] },
                 },
                 def_color: 'gray',
                 description: {
-                    speed: '25 км/ч',
-                    range: 'до 35 км',
-                    other: 'Защита от воды IP65',
+                    0: 'Мотор Bosch (Germany) 1200 W',
+                    1: 'Максимальная скорость 45 км/ч',
+                    2: 'Максимальная дистанция 180 км',
+                    3: 'Максимальная нагрузка 160 кг',
+                    4: 'Аккумулятор 60V 20Ah Lithium',
+                    5: 'Время зарядки 5 часов',
+                    6: 'Количество циклов зарядки 600',
+                    7: 'Собственный вес 99 кг',
+                    8: 'Габариты 1670x650x1055 (мм)',
+                    9: 'Защита от воды IP65',
                 },
                 stock: 'out',
             }
@@ -145,15 +229,22 @@ export const MODELS = {
         name: 'Uranus',
         active: true,
         modify: {
-            '1': {
+            '3KW': {
                 colors: {
                     white: { poster: '1.png', gallery: ['1.png'] },
                 },
                 def_color: 'white',
                 description: {
-                    speed: '25 км/ч',
-                    range: 'до 35 км',
-                    other: 'Защита от воды IP65',
+                    0: 'Мотор Bosch (Germany) 3 KW',
+                    1: 'Максимальная скорость 45 км/ч',
+                    2: 'Максимальная дистанция 120 км (<45 км/ч)',
+                    3: 'Максимальная нагрузка 160 кг',
+                    4: 'Аккумулятор 72V 26Ah Lithium',
+                    5: 'Время зарядки 6-8 часов',
+                    6: 'Количество циклов зарядки 600',
+                    7: 'Собственный вес 99 кг',
+                    8: 'Габариты 1780x730x1030 (мм)',
+                    9: 'Защита от воды IP65',
                 },
                 stock: 'out',
             }
@@ -169,9 +260,16 @@ export const MODELS = {
                 },
                 def_color: 'white',
                 description: {
-                    speed: '25 км/ч',
-                    range: 'до 35 км',
-                    other: 'Защита от воды IP65',
+                    0: 'Мотор Bosch (Germany) 1200/2000 W',
+                    1: 'Максимальная скорость 45 км/ч',
+                    2: 'Максимальная дистанция 50 км',
+                    3: 'Максимальная нагрузка 150 кг',
+                    4: 'Аккумулятор 60V 26Ah Lithium',
+                    5: 'Время зарядки 6-8 часов',
+                    6: 'Количество циклов зарядки 600',
+                    7: 'Собственный вес 99 кг',
+                    8: 'Габариты 1850x650x1150 (мм)',
+                    9: 'Защита от воды IP65',
                 },
                 stock: 'out',
             }
@@ -187,9 +285,16 @@ export const MODELS = {
                 },
                 def_color: 'mint',
                 description: {
-                    speed: '25 км/ч',
-                    range: 'до 35 км',
-                    other: 'Защита от воды IP65',
+                    0: 'Мотор Bosch (Germany) 3 KW',
+                    1: 'Максимальная скорость 45/70 км/ч',
+                    2: 'Максимальная дистанция 120 км (<45 км/ч)',
+                    3: 'Максимальная нагрузка 160 кг',
+                    4: 'Аккумулятор 72V 26Ah Lithium',
+                    5: 'Время зарядки 6-8 часов',
+                    6: 'Количество циклов зарядки 600',
+                    7: 'Собственный вес 99 кг',
+                    8: 'Габариты 1780x730x1030 (мм)',
+                    9: 'Защита от воды IP65',
                 },
                 stock: 'out',
             }
