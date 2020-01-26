@@ -1,5 +1,8 @@
 export const PATH = {
-    PriceList: '#',
+    PriceList: [
+        {  url: './uploads/presentation.pdf', name: 'Скачать презентацию' },
+        {  url: './uploads/catalog.pdf', name: 'Скачать каталог' },
+    ],
     ImgModels: './assets/img/models/',
     Root: '/',
 }

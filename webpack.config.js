@@ -123,6 +123,7 @@ if (!isDev)
     const imgModels = path.join('assets/img','models');
     const source = path.join(__dirname, imgModels);
     const destination = path.join(prodPath, imgModels);
+    const uploads = path.join(prodPath, 'uploads');
 
     fs.removeSync(prodPath);
 
@@ -150,7 +151,7 @@ if (!isDev)
         }
     });
 
-    fs.mkdirSync(path.join(prodPath, 'uploads'), error =>
+    fs.mkdirSync(uploads, error =>
     {
         if (error)
         {
@@ -172,6 +173,15 @@ if (!isDev)
         {
             return console.error(err)
         }
-        console.log('\nCopy completed!')
+        console.log('\nIMAGES were transfered!')
+    });
+
+    fs.copy(path.join(__dirname, 'uploads'), uploads, err =>
+    {
+        if (err)
+        {
+            return console.error(err)
+        }
+        console.log('\nPrices were transfered!')
     });
 }

@@ -159,6 +159,16 @@ export class MainPage extends React.PureComponent
         return r;
     }
 
+    renderPrices()
+    {
+        let r = [];
+        for (let f in PATH.PriceList)
+        {
+            r.push(<li key={f}><a href={PATH.PriceList[f].url} target="_blank">{PATH.PriceList[f].name}</a></li>)
+        }
+        return r;
+    }
+
     renderModel()
     {
         const img_name = this.state.model.modify[this.state.current_modify].colors[this.state.current_color].poster;
@@ -168,10 +178,7 @@ export class MainPage extends React.PureComponent
             <div className={css.side+' '+css.sideFirst}>
                 <h1 className={css.h1}>{this.state.model.name}</h1>
                 <div className={css.nameBg}></div>
-                <ul className={css.linkList}>
-                    <li><a href={PATH.PriceList}>Скачать прайс модели</a></li>
-                    <li><a href={PATH.PriceList}>Скачать прайс<br/>запчастей и аксессуаров</a></li>
-                </ul>
+                <ul className={css.linkList}>{this.renderPrices()}</ul>
             </div>
             <div className={css.side}>
                 <div className={css.nameBg}>
