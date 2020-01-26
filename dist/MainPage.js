@@ -213,24 +213,19 @@ export class MainPage extends React.PureComponent
             </div>
             <div className={css.side+' '+css.mTop}>
                 <ul className={css.modifyBlock+' '+css.stock+' '+css.dFlex}>
-                    {this.state.model.modify[this.state.current_modify].stock === 'in'
-                        ? <li className={css.modifyElement+' '+css.red+' '+css.stockFont}>
-                            <span style={{ position: 'relative' }}>
-                                {STOCK[this.state.model.modify[this.state.current_modify].stock]}
-                                <span className={css.inStock}></span>
-                            </span>
-                        </li>
-                        : <li className={css.modifyElement+' '+css.stockFont}>
-                            <span style={{ position: 'relative' }}>
-                                {STOCK[this.state.model.modify[this.state.current_modify].stock]}
-                                <span className={css.outStock}>&times;</span>
-                            </span>
-                            <a href={'tel:'+CONTACTS.tel.href}
-                                className={css.callBtnText+' '+css.boldRed+' '+css.stockLink}
-                                onClick={this.onCallManager}>
-                                Связаться с менеджером
-                            </a>
-                        </li>}
+                    <li className={css.modifyElement+' '+css.stockFont}>
+                        <span style={{ position: 'relative' }}>
+                            {STOCK[this.state.model.modify[this.state.current_modify].stock]}
+                            {this.state.model.modify[this.state.current_modify].stock === 'in'
+                                ? <span className={css.inStock}></span>
+                                : <span className={css.outStock}>&times;</span>}
+                        </span>
+                        <a href={'tel:'+CONTACTS.tel[0].href}
+                            className={css.callBtnText+' '+css.boldRed+' '+css.stockLink}
+                            onClick={this.onCallManager}>
+                            Связаться с менеджером
+                        </a>
+                    </li>
                 </ul>
                 <ul className={css.colorsBlock+' '+css.dFlex+' '+css.flexWrap}>{this.renderColors()}</ul>
                 {this.state.modify.length && this.state.modify[0] !== '1'
