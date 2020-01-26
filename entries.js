@@ -8,10 +8,13 @@ export const PATH = {
 }
 
 export const CONTACTS = {
-    tel: { href: "+78005516810", num: "8 800 551-68-10"},
+    tel: [
+        { href: "+74993468166", num: "+7 (499) 346-81-66" },
+        { href: "+78005516810", num: "8 800 551-68-10" },
+    ],
     email: "eko-bike@mail.ru",
     address: ['г.Санкт-Петербург  Большой Сампсониевский пр.29','г.Москва, ул. Средняя Первомайская д.3'],
-    yaMap: { src: 'https://yandex.ru/map-widget/v1/?um=constructor%3Aa9c290ef41c7d9834f65793d1edc7df3bf11fe3bd0eff4c9ad560737cccbc747&amp;source=constructor' },
+    yaMap: { src: 'https://yandex.ru/map-widget/v1/?um=constructor%3Ab37dae24b5bf34958515966874bf7b88e0ece9bced591634abebc32b03f94c78&amp;source=constructor' },
     about: [
         'iSputnik - экология движения!',
         'Компания iSputnik в настоящее время специализируется на бренде Doohan и является авторизованным импортером и дистрибьютором Doohan в России!',
@@ -48,7 +51,7 @@ export const MODELS = {
                     9: 'Защита от воды IP65',
                 },
                 stock: 'in',
-                price: 'XXX XXX руб',
+                price: '259 000 руб',
             },
             '3900W': {
                 colors: {
@@ -71,7 +74,7 @@ export const MODELS = {
                     9: 'Защита от воды IP65',
                 },
                 stock: 'in',
-                price: 'XXX XXX руб',
+                price: '279 000 руб',
             },
         }
     },

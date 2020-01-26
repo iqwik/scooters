@@ -169,6 +169,24 @@ export class MainPage extends React.PureComponent
         return r;
     }
 
+    renderDivContacts(hide_in_mob = false)
+    {
+        return (<div className={[css.callBtn, css.dFlex, hide_in_mob ? css.mobHide : null].join(' ')}>
+            <a href={"mailto:"+CONTACTS.email} className={css.callBtnText+' '+css.boldRed}>Написать нам</a>
+            <a href={"tel:"+CONTACTS.tel[0].href} className={css.callBtnText+' '+css.boldRed}>Позвонить нам</a>
+        </div>);
+    }
+
+    renderPhones()
+    {
+        let r = [];
+        for (let i in CONTACTS.tel)
+        {
+            r.push(<li key={i}><a href={"tel:"+CONTACTS.tel[i].href}>{CONTACTS.tel[i].num}</a></li>)
+        }
+        return r;
+    }
+
     renderModel()
     {
         const img_name = this.state.model.modify[this.state.current_modify].colors[this.state.current_color].poster;
@@ -224,10 +242,7 @@ export class MainPage extends React.PureComponent
                           <li className={css.modifyElement} style={{cursor: 'default', fontWeight: 'bold'}}>{this.state.model.modify[this.state.current_modify].price}</li>
                       </ul>
                     : <p className={css.price}></p>}
-                <div className={css.callBtn+' '+css.dFlex+' '+css.mobHide}>
-                    <a href="#" className={css.callBtnText+' '+css.boldRed} onClick={this.onClickEmail}>Написать нам</a>
-                    <a href="#" className={css.callBtnText+' '+css.boldRed} onClick={this.onClickCall}>Позвонить нам</a>
-                </div>
+                {this.renderDivContacts(true)}
             </div>
         </div>);
     }
@@ -331,7 +346,7 @@ export class MainPage extends React.PureComponent
                         <div className={cont_css.infoAll}>
                             <h4>Заказ и сотрудичество:</h4>
                             <ul>
-                                <li><a href={"tel:"+CONTACTS.tel.href}>{CONTACTS.tel.num}</a></li>
+                                {this.renderPhones()}
                                 <li><a href={"mailto:"+CONTACTS.email}>{CONTACTS.email}</a></li>
                             </ul>
                             <h4>Адреса магазинов:</h4>
@@ -379,18 +394,12 @@ export class MainPage extends React.PureComponent
                 </header>
                 {this.state.current_link ? this.renderModel() : this.renderModelsList()}
                 <div className={css.descHide+' '+css.greyBgHoriz}>
-                    {this.state.current_link ? <ul className={css.linkList}>
-                        <li><a href={PATH.PriceList}>Скачать прайс модели</a></li>
-                        <li><a href={PATH.PriceList}>Скачать прайс<br/>запчастей и аксессуаров</a></li>
-                    </ul> : null}
+                    {this.state.current_link ? <ul className={css.linkList}>{this.renderPrices()}</ul> : null}
                     <ul className={css.linkList}>
                         <li className={css.contactsMob} onClick={this.bind('setDialog', 'about', true)}><nobr>О нас</nobr></li>
                         <li className={css.contactsMob} onClick={this.bind('setDialog', 'contacts', true)}>Контакты</li>
                     </ul>
-                    {this.state.current_link ? <div className={css.callBtn+' '+css.dFlex}>
-                        <a href="#" className={css.callBtnText+' '+css.boldRed} onClick={this.onClickEmail}>Написать нам</a>
-                        <a href="#" className={css.callBtnText+' '+css.boldRed} onClick={this.onClickCall}>Позвонить нам</a>
-                    </div> : null}
+                    {this.state.current_link ? this.renderDivContacts() : null}
                 </div>
                 {this.state.show_dialog.about ? this.renderAbout() : null}
                 {this.state.show_dialog.contacts ? this.renderContacts() : null}
