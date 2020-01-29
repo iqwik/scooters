@@ -345,7 +345,7 @@ export class MainPage extends React.PureComponent
                                 <li><a href={"mailto:"+CONTACTS.email}>{CONTACTS.email}</a></li>
                             </ul>
                             <h4>Адреса магазинов:</h4>
-                            <ul>
+                            <ul className={cont_css.ul}>
                                 {CONTACTS.address.length > 1
                                     ? CONTACTS.address.map((el, idx) => <li key={idx}>{el}</li>)
                                     : <li>{CONTACTS.address[0]}</li>}

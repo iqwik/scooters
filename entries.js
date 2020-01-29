@@ -13,8 +13,8 @@ export const CONTACTS = {
         { href: "+78005516810", num: "8 800 551-68-10" },
     ],
     email: "eko-bike@mail.ru",
-    address: ['г.Санкт-Петербург  Большой Сампсониевский пр.29','г.Москва, ул. Средняя Первомайская д.3'],
-    yaMap: { src: 'https://yandex.ru/map-widget/v1/?um=constructor%3Ab37dae24b5bf34958515966874bf7b88e0ece9bced591634abebc32b03f94c78&amp;source=constructor' },
+    address: ['г.Москва, ул. Осенняя д.17 корп.2','г.Москва, ул. Средняя Первомайская д.3','г.Санкт-Петербург  Большой Сампсониевский пр.29'],
+    yaMap: { src: 'https://yandex.ru/map-widget/v1/?um=constructor%3Ab37dae24b5bf34958515966874bf7b88e0ece9bced591634abebc32b03f94c78&amp;source=constructor"' },
     about: [
         'iSputnik - экология движения!',
         'Компания iSputnik в настоящее время специализируется на бренде Doohan и является авторизованным импортером и дистрибьютором Doohan в России!',
@@ -50,10 +50,9 @@ export const MODELS = {
                     8: 'Габариты 1780x730x1030 (мм)',
                     9: 'Защита от воды IP65',
                 },
-                stock: 'in',
-                price: '259 000 руб',
+                stock: 'out',
             },
-            '3900W': {
+            '3000W': {
                 colors: {
                     red: { poster: '1.png', gallery: ['1.png','2.png','3.png','4.png'] },
                     black: { poster: '1.png', gallery: ['1.png','2.png','3.png','4.png'] },
@@ -74,7 +73,7 @@ export const MODELS = {
                     9: 'Защита от воды IP65',
                 },
                 stock: 'in',
-                price: '279 000 руб',
+                price: '435 000 руб',
             },
         }
     },

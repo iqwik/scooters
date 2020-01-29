@@ -123,10 +123,10 @@
         padding: 2rem;
     }
 
-    .infoP p
-    {
-        font-size: 14px;
-    }
+    /*.infoP p*/
+    /*{*/
+        /*font-size: 14px;*/
+    /*}*/
 }
 
 .info ul
@@ -134,6 +134,16 @@
     list-style-type: none;
     padding: 0;
     margin-top: 0;
+}
+
+.infoAll .ul
+{
+    list-style-type: disc;
+}
+
+.infoAll .ul li
+{
+    margin-bottom: 10px;
 }
 
 .info h4
@@ -157,8 +167,8 @@
         align-items: center;
         height: 100%;
         min-height: 100vh;
-        background: transparent;
-        color: #000;
+        /*background: transparent;*/
+        /*color: #000;*/
         font-size: 18px;
         z-index: 1;
     }
