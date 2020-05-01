@@ -736,10 +736,10 @@ body
     margin-left: 35px;
 }
 
-.callBtnText:last-of-type
-{
-    margin-left: 70px;
-}
+/*.callBtnText:last-of-type*/
+/*{*/
+/*    margin-left: 70px;*/
+/*}*/
 
 @media (max-width: 1390px)
 {
@@ -837,7 +837,6 @@ body
 {
     margin-left: 50px;
 }
-
 @media (max-width: 600px)
 {
     .stockFont>span
@@ -862,4 +861,8 @@ body
     {
         top: 2px;
     }
+}
+.marginLeftNone
+{
+    margin-left: 0!important;
 }

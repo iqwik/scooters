@@ -37,7 +37,7 @@ export class MainPage extends React.PureComponent
         {
             const model = MODELS[current_link];
             const modify = Object.keys(model.modify);
-            const current_modify = modify[0];
+            const current_modify = model.def_modify ? model.def_modify : modify[0];
             const colors = Object.keys(model.modify[current_modify].colors);
             const current_color = model.modify[current_modify].def_color;
 
@@ -62,7 +62,7 @@ export class MainPage extends React.PureComponent
         const loading = true;
         const model = MODELS[current_link];
         const modify = Object.keys(model.modify);
-        const current_modify = modify[0];
+        const current_modify = model.def_modify ? model.def_modify : modify[0];
         const colors = Object.keys(model.modify[current_modify].colors);
         const current_color = model.modify[current_modify].def_color;
         this.setState({ model, current_link, modify, current_modify, current_color, colors, loading });
@@ -84,13 +84,11 @@ export class MainPage extends React.PureComponent
     onClickEmail = (e) =>
     {
         e.preventDefault();
-        console.log('emailing');
     }
 
     onClickCall = (e) =>
     {
         e.preventDefault();
-        console.log('calling');
     }
 
     onCallManager = (e) =>
@@ -189,52 +187,51 @@ export class MainPage extends React.PureComponent
 
     renderModel()
     {
-        const img_name = this.state.model.modify[this.state.current_modify].colors[this.state.current_color].poster;
-        const poster = this.state.model.name+'/'+this.state.current_modify+'/'+this.state.current_color+'/'+img_name;
+        const { model, modify, current_modify, current_color } = this.state;
+        const img_name = model.modify[current_modify].colors[current_color].poster;
+        // const poster = this.state.model.name+'/'+this.state.current_modify+'/'+this.state.current_color+'/'+img_name;
         return (<div className={css.container+' '+css.body+' '+css.dFlex}>
             <nav className={css.navigationMob}><ul className={css.nav}>{this.renderNav()}</ul></nav>
             <div className={css.side+' '+css.sideFirst}>
-                <h1 className={css.h1}>{this.state.model.name}</h1>
+                <h1 className={css.h1}>{model.name}</h1>
                 <div className={css.nameBg}></div>
                 <ul className={css.linkList}>{this.renderPrices()}</ul>
             </div>
             <div className={css.side}>
                 <div className={css.nameBg}>
-                    <span className={css.NameBgAbsolute+' '+css.mTop}>
-                        {this.state.model.name}
-                    </span>
+                    <span className={css.NameBgAbsolute+' '+css.mTop}>{model.name}</span>
                     {this.state.loading ? <LoadingOverlay /> : (this.state.show_gallery ? <Gallery
                         //loading={this.state.loading}
                         //onload={this.onLoading}
-                        gallery={this.state.model.modify[this.state.current_modify].colors[this.state.current_color].gallery}
-                        path={PATH.ImgModels+this.state.model.name+'/'+this.state.current_modify+'/'+this.state.current_color}
+                        gallery={model.modify[current_modify].colors[current_color].gallery}
+                        path={PATH.ImgModels+model.name+'/'+current_modify+'/'+current_color}
                     /> : null) }
                 </div>
             </div>
             <div className={css.side+' '+css.mTop}>
                 <ul className={css.modifyBlock+' '+css.stock+' '+css.dFlex}>
                     <li className={css.modifyElement+' '+css.stockFont}>
-                        <span style={{ position: 'relative' }}>
-                            {STOCK[this.state.model.modify[this.state.current_modify].stock]}
-                            {this.state.model.modify[this.state.current_modify].stock === 'in'
+                        {/*<span style={{ position: 'relative' }}>
+                            {STOCK[model.modify[current_modify].stock]}
+                            {model.modify[current_modify].stock === 'in'
                                 ? <span className={css.inStock}></span>
                                 : <span className={css.outStock}>&times;</span>}
-                        </span>
+                        </span>*/}
                         <a href={'tel:'+CONTACTS.tel[0].href}
-                            className={css.callBtnText+' '+css.boldRed+' '+css.stockLink}
+                            className={css.callBtnText+' '+css.boldRed+' '+css.stockLink+' '+css.marginLeftNone}
                             onClick={this.onCallManager}>
                             Связаться с менеджером
                         </a>
                     </li>
                 </ul>
                 <ul className={css.colorsBlock+' '+css.dFlex+' '+css.flexWrap}>{this.renderColors()}</ul>
-                {this.state.modify.length && this.state.modify[0] !== '1'
+                {modify.length && modify[0] !== '1'
                     ? <ul className={css.modifyBlock+' '+css.dFlex}>{this.renderModify()}</ul> : null}
-                {Object.keys(this.state.model.modify[this.state.current_modify].description).length
+                {Object.keys(model.modify[current_modify].description).length
                     ? <ul className={css.paramsBlock}>{this.renderModelDescription()}</ul> : null}
-                {this.state.model.modify[this.state.current_modify].price
+                {model.modify[current_modify].price
                     ? <ul className={css.modifyBlock+' '+css.price+' '+css.dFlex}>
-                          <li className={css.modifyElement} style={{cursor: 'default', fontWeight: 'bold'}}>{this.state.model.modify[this.state.current_modify].price}</li>
+                          <li className={css.modifyElement} style={{cursor: 'default', fontWeight: 'bold'}}>{model.modify[current_modify].price}</li>
                       </ul>
                     : <p className={css.price}></p>}
                 {this.renderDivContacts(true)}

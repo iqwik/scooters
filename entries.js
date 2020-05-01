@@ -74,7 +74,8 @@ export const MODELS = {
                 stock: 'in',
                 price: '435 000 руб',
             },
-        }
+        },
+        def_modify: '3000W'
     },
     "iTango": {
         name: 'iTango',
