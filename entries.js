@@ -1,7 +1,7 @@
 export const PATH = {
     PriceList: [
         {  url: './uploads/presentation.pdf', name: 'Скачать презентацию' },
-        {  url: './uploads/catalog.pdf', name: 'Скачать каталог' },
+        //{  url: './uploads/catalog.pdf', name: 'Скачать каталог' },
     ],
     ImgModels: './assets/img/models/',
     Root: '/',
