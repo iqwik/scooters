@@ -32,79 +32,79 @@ module.exports = {
         })
     ],
     module:
-    {
-        rules:
-            [
-                {
-                    test: /\.(js|jsx)$/,
-                    exclude: /node_modules/,
-                    use: [{
-                        loader: 'babel-loader',
-                        options: {
-                            presets: ['es2015', 'react', 'stage-1']
+        {
+            rules:
+                [
+                    {
+                        test: /\.(js|jsx)$/,
+                        exclude: /node_modules/,
+                        use: [{
+                            loader: 'babel-loader',
+                            options: {
+                                presets: ['es2015', 'react', 'stage-1']
+                            }
                         }
-                    }
-                    ]
-                },
-                {
-                    test: /\.(sa|sc|c)ss$/,
-                    exclude: /node_modules/,
-                    use:
-                        [
-                            {
-                                loader: MiniCssExtractPlugin.loader,
-                                options: {
-                                    hmr: isDev,
-                                },
-                            },
-                            {
-                                loader: 'css-loader',
-                                options: {
-                                    modules: true,
-                                    sourceMap: true,
-                                    importLoaders: 2,
-                                    localIdentName: '[name]--[local]--[hash:base64:6]'
-                                }
-                            },
-                            'sass-loader',
-                            'postcss-loader',
-                            'resolve-url-loader',
                         ]
-                },
-                {
-                    test: /\.(gif|png|jpe?g|svg)$/i,
-                    use:
-                        [
-                            {
-                                loader: 'file-loader',
-                                options: {
-                                    name: isDev ? '[path][name].[ext]' : '[path][name]_[hash:base64:6].[ext]',
-                                    useRelativePath: true
-                                },
-                            },
-                            {
-                                loader: 'image-webpack-loader',
-                                options: {
-                                    mozjpeg: {
-                                        progressive: true,
-                                        quality: 70
-                                    }
-                                }
-                            },
-                        ],
-                },
-                {
-                    test: /\.(eot|svg|ttf|woff|woff2)$/,
-                    use: {
-                        loader: 'file-loader',
-                        options: {
-                            name: isDev ? '[path][name].[ext]' : '[path][name]_[hash:base64:6].[ext]',
-                            useRelativePath: true
-                        }
                     },
-                }
-            ]
-    },
+                    {
+                        test: /\.(sa|sc|c)ss$/,
+                        exclude: /node_modules/,
+                        use:
+                            [
+                                {
+                                    loader: MiniCssExtractPlugin.loader,
+                                    options: {
+                                        hmr: isDev,
+                                    },
+                                },
+                                {
+                                    loader: 'css-loader',
+                                    options: {
+                                        modules: true,
+                                        sourceMap: true,
+                                        importLoaders: 2,
+                                        localIdentName: '[name]--[local]--[hash:base64:6]'
+                                    }
+                                },
+                                'sass-loader',
+                                'postcss-loader',
+                                'resolve-url-loader',
+                            ]
+                    },
+                    {
+                        test: /\.(gif|png|jpe?g|svg)$/i,
+                        use:
+                            [
+                                {
+                                    loader: 'file-loader',
+                                    options: {
+                                        name: isDev ? '[path][name].[ext]' : '[path][name]_[hash:base64:6].[ext]',
+                                        useRelativePath: true
+                                    },
+                                },
+                                {
+                                    loader: 'image-webpack-loader',
+                                    options: {
+                                        mozjpeg: {
+                                            progressive: true,
+                                            quality: 70
+                                        }
+                                    }
+                                },
+                            ],
+                    },
+                    {
+                        test: /\.(eot|svg|ttf|woff|woff2)$/,
+                        use: {
+                            loader: 'file-loader',
+                            options: {
+                                name: isDev ? '[path][name].[ext]' : '[path][name]_[hash:base64:6].[ext]',
+                                useRelativePath: true
+                            }
+                        },
+                    }
+                ]
+        },
     resolve: {
         modules: [__dirname, 'node_modules'],
         extensions: ['.js', '.jsx'],
